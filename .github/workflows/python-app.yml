@@ -1,10 +1,5 @@
-name: Python application
+name: osapi
 on: 
-#   push:
-#     # Sequence of patterns matched against refs/heads
-#     branches:    
-#       # Push events on develop branch
-#       - develop
   pull_request:
       branches:
         - develop
@@ -12,12 +7,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+        max-parallel: 3
+        matrix:
+          python-version: [3.7, 3.8, 3.9]
     steps:
     - uses: actions/checkout@v1
     - name: Set up Python 3.8.7
       uses: actions/setup-python@v1
-      with:
-        python-version: 3.8.7
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
