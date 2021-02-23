@@ -1,5 +1,13 @@
 name: Python application
-on: [push]
+on: 
+#   push:
+#     # Sequence of patterns matched against refs/heads
+#     branches:    
+#       # Push events on develop branch
+#       - develop
+  pull_request:
+      branches:
+        - develop
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,6 +23,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run migrations
-      run: python manage.py migrate
+      run: python opensolar_ci/manage.py migrate
     - name: Run tests
-      run: python manage.py test
+      run: python opensolar_ci/manage.py test
