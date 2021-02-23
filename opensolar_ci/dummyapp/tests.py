@@ -8,3 +8,5 @@ class DummyTestCase(TestCase):
 
     def test_another_dummy(self):
         self.assertTrue(1)
+    def test_another_dummy(self):
+        self.assertTrue(1)
