@@ -1,5 +1,10 @@
 name: Python application
-on: [push]
+on: 
+  push:
+    # Sequence of patterns matched against refs/heads
+    branches:    
+      # Push events on develop branch
+      - develop
 jobs:
   build:
     runs-on: ubuntu-latest
